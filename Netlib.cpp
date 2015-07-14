@@ -1,4 +1,4 @@
-#include "netlib.h"
+#include "Netlib.h"
 #include "BaseSocket.h"
 #include "EventDispatch.h"
 
@@ -40,7 +40,7 @@ int netlib_listen(
 	if(!pSocket)
 		return NETLIB_ERROR;
 
-	int ret = pSocket->listen(server_ip, port , callback , callback_data);
+	int ret = pSocket->Listen(server_ip, port , callback , callback_data);
 	if(ret == NETLIB_ERROR)
 		delete pSocket;
 
@@ -122,7 +122,7 @@ int netlib_option(net_handle_t handle, int opt, void* optval)
 	case NETLIB_OPT_GET_REMOTE_IP:
 		*(string*)optval = pSocket->GetRemoteIP();
 		break;
-	case NETLIB_OPT_GET_REMOTE_PORT;
+	case NETLIB_OPT_GET_REMOTE_PORT:
 		*(uint16_t*)optval = pSocket->GetRemotePort();
 		break;
 	case NETLIB_OPT_GET_LOCAL_IP:
@@ -160,7 +160,7 @@ int netlib_add_loop(callback_t callback, void* user_data)
 
 void netlib_eventloop(uint32_t wait_timeout)
 {
-	CEVentDispatch::Instance()->StartDispatch(wait_timeout);
+	CEventDispatch::Instance()->StartDispatch(wait_timeout);
 }
 
 void netlib_stop_event()

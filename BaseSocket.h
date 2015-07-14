@@ -1,8 +1,11 @@
 #ifndef __SOCKET_H__
 #define __SOCKET_H__
 
-#include "ostype.h"
-#include "util.h"
+#include <string>
+#include "Ostype.h"
+#include "Util.h"
+
+using namespace std;
 
 enum
 {

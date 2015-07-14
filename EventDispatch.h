@@ -1,15 +1,15 @@
 #ifndef __EVENT_DISPATCH_H__
 #define __EVENT_DISPATCH_H__
 
-#include "ostype.h"
-#include "util.h"
+#include "Ostype.h"
+#include "Util.h"
 
 #include "Lock.h"
 
 enum{
 	SOCKET_READ	  = 0x01,
 	SOCKET_WRITE  = 0x02,
-	SOCKET_EXCEPT = 0X04,
+	SOCKET_EXCEP = 0X04,
 	SOCKET_ALL	  = 0x7
 };
 
@@ -18,7 +18,7 @@ class CEventDispatch
 public:
 	virtual ~CEventDispatch();
 	void AddEvent(SOCKET fd, uint8_t socket_event);
-	void RemoveEVent(SOCKET fd, uint8_t socket_event);
+	void RemoveEvent(SOCKET fd, uint8_t socket_event);
 	
 	void AddTimer(callback_t callback, void* user_data, uint64_t interval);
 	void RemoveTimer(callback_t callback, void* user_data);
@@ -43,7 +43,7 @@ private:
 		void*		user_data;
 		uint64_t	interval;
 		uint64_t    next_tick;
-	}TimerIterm;
+	}TimerItem;
 	
 private:
 #ifdef	_WIN32
@@ -64,3 +64,5 @@ private:
 	bool running;
 
 };
+
+#endif

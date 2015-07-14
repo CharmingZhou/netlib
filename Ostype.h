@@ -39,7 +39,7 @@
 	#include <ext/hash_map>
 	using namespace __gnu_cxx;
 	namespace __gnu_cxx{
-		temlate<> struct hash<std::string>
+		template<> struct hash<std::string>
 		{
 			size_t operator()(const std::string& x) const
 			{
@@ -79,9 +79,10 @@ typedef unsigned char uchar_t;
 typedef int			  net_handle_t;
 typedef int			  conn_handle_t;
 
-enum{
-	NETLIB_OK	= 0;
-	NETLIB_ERROR = -1;
+enum
+{
+	NETLIB_OK	= 0,
+	NETLIB_ERROR = -1
 };
 
 #define NETLIB_INVALID_HANDLE -1
@@ -100,6 +101,6 @@ enum
 const uint32_t INVALID_UINT32 = (uint32_t) -1;
 const uint32_t INVALID_VALUE = 0;
 
-typedef void (*callback_t) (void* callback-data, uint8_t msg, uint32_t handle, void* pParam);
+typedef void (*callback_t) (void* callback_data, uint8_t msg, uint32_t handle, void* pParam);
 
 #endif

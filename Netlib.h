@@ -1,7 +1,7 @@
 #ifndef __NETLIB_H__
 #define __NETLIB_H__
 
-#include "ostype.h"
+#include "Ostype.h"
 
 #define NETLIB_OPT_SET_CALLBACK 		1
 #define NETLIB_OPT_SET_CALLBACK_DATA	2
@@ -21,7 +21,7 @@ extern "C" {
 int netlib_init();
 int netlib_destroy();
 int netlib_listen(
-		const char* server_ip;
+		const char* server_ip,
 		uint16_t	port,
 		callback_t  callback,
 		void*		callback_data);

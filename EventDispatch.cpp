@@ -16,13 +16,13 @@ CEventDispatch::CEventDispatch()
 	m_kqfd = kqueue();
 	if(m_kqfd == -1)
 	{
-		log("kqueue failed");
+//		log("kqueue failed");
 	}
 #else
 	m_epfd = epoll_create(1024);
 	if( m_epfd == -1)
 	{
-		log("epoll_create failed");
+//		log("epoll_create failed");
 	}
 #endif	
 }
@@ -62,10 +62,10 @@ void CEventDispatch::AddTimer(callback_t callback, void* user_data, uint64_t int
 	m_timer_list.push_back(pItem);
 }
 
-void CEVentDispatch::RemoveTimer(callback_t callback, void* user_data)
+void CEventDispatch::RemoveTimer(callback_t callback, void* user_data)
 {
 	list<TimerItem*>::iterator it;
-	for( it = m_timer_list.begin() it != m_timer_list.end() ; it++)
+	for( it = m_timer_list.begin(); it != m_timer_list.end() ; it++)
 	{
 		TimerItem* pItem = *it;
 		if( pItem->callback == callback && pItem->user_data == user_data)
@@ -336,7 +336,7 @@ void CEventDispatch::AddEvent(SOCKET fd, uint8_t socket_event)
 	ev.data.fd = fd;
 	if(epoll_ctl(m_epfd, EPOLL_CTL_ADD , fd, &ev) != 0)
 	{
-		log("epoll_ctl() failed, errno=%d", errno);
+//		log("epoll_ctl() failed, errno=%d", errno);
 	}
 }
 
@@ -344,7 +344,7 @@ void CEventDispatch::RemoveEvent(SOCKET fd, uint8_t socket_event)
 {
 	if(epoll_ctl(m_epfd, EPOLL_CTL_DEL, fd, NULL) != 0)
 	{
-		log("epoll_ctl failed , errno=%d", errno);
+//		log("epoll_ctl failed , errno=%d", errno);
 	}
 }
 
